@@ -1,78 +1,127 @@
-    <!-- Main Dashboard Content -->
-    <main class="container mx-auto px-4 py-8">
-        <h2 class="text-3xl font-bold text-gray-800 mb-8">Welcome Back!</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <!-- Quick Stats -->
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-lg font-semibold mb-2">Monthly Savings</h3>
-                <p class="text-2xl font-bold text-purple-600">$125.50</p>
-            </div>
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-lg font-semibold mb-2">Tasks Completed</h3>
-                <p class="text-2xl font-bold text-blue-600">42</p>
-            </div>
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-lg font-semibold mb-2">Upcoming Tasks</h3>
-                <p class="text-2xl font-bold text-green-600">5</p>
-            </div>
-        </div>
-
-        <!-- Quick Actions -->
-        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-            <h3 class="text-xl font-semibold mb-4">Quick Actions</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <button onclick="window.location.href='groceries.html'" class="flex items-center justify-center p-4 bg-purple-100 text-purple-600 rounded-lg hover:bg-purple-200 transition">
-                    <i data-feather="shopping-cart" class="mr-2"></i> Groceries
-                </button>
-                <button onclick="window.location.href='rides.html'" class="flex items-center justify-center p-4 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 transition">
-                    <i data-feather="truck" class="mr-2"></i> Book Ride
-                </button>
-                <button onclick="window.location.href='reminders.html'" class="flex items-center justify-center p-4 bg-green-100 text-green-600 rounded-lg hover:bg-green-200 transition">
-                    <i data-feather="clock" class="mr-2"></i> Set Reminder
-                </button>
-                <button class="flex items-center justify-center p-4 bg-yellow-100 text-yellow-600 rounded-lg hover:bg-yellow-200 transition">
-                    <i data-feather="settings" class="mr-2"></i> Settings
-                </button>
-            </div>
-        </div>
-
-        <!-- Recent Activity -->
-        <div class="bg-white rounded-lg shadow-md p-6">
-            <h3 class="text-xl font-semibold mb-4">Recent Activity</h3>
-            <div class="space-y-4">
-                <div class="flex items-start border-b pb-4">
-                    <div class="bg-purple-100 p-2 rounded-full mr-4">
-                        <i data-feather="shopping-bag" class="text-purple-600"></i>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | ChoreMaster AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+        }
+        .task-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50">
+    <!-- Main Content -->
+    <div class="relative z-10">
+        <!-- Header -->
+        <header class="gradient-bg text-white shadow-lg">
+            <div class="container mx-auto px-4 py-6">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center space-x-2">
+                        <i data-feather="home" class="w-8 h-8"></i>
+                        <h1 class="text-2xl font-bold">ChoreMaster AI</h1>
                     </div>
-                    <div>
-                        <p class="font-medium">Grocery order placed</p>
-                        <p class="text-sm text-gray-500">15 minutes ago</p>
-                    </div>
-                </div>
-                <div class="flex items-start border-b pb-4">
-                    <div class="bg-blue-100 p-2 rounded-full mr-4">
-                        <i data-feather="truck" class="text-blue-600"></i>
-                    </div>
-                    <div>
-                        <p class="font-medium">PickMe ride scheduled</p>
-                        <p class="text-sm text-gray-500">2 hours ago</p>
-                    </div>
-                </div>
-                <div class="flex items-start">
-                    <div class="bg-green-100 p-2 rounded-full mr-4">
-                        <i data-feather="bell" class="text-green-600"></i>
-                    </div>
-                    <div>
-                        <p class="font-medium">Reminder set for laundry</p>
-                        <p class="text-sm text-gray-500">Yesterday</p>
-                    </div>
+                    <nav class="hidden md:flex space-x-6">
+                        <a href="index.html" class="hover:text-gray-200 transition">Dashboard</a>
+                        <a href="groceries.html" class="hover:text-gray-200 transition">Groceries</a>
+                        <a href="rides.html" class="hover:text-gray-200 transition">Rides</a>
+                        <a href="reminders.html" class="hover:text-gray-200 transition">Reminders</a>
+                    </nav>
+                    <button class="md:hidden">
+                        <i data-feather="menu" class="w-6 h-6"></i>
+                    </button>
                 </div>
             </div>
-        </div>
-    </main>
-</div>
+        </header>
 
-<script>
-    feather.replace();
-</script>
+        <!-- Main Dashboard Content -->
+        <main class="container mx-auto px-4 py-8">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">Welcome Back!</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- Quick Stats -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg font-semibold mb-2">Monthly Savings</h3>
+                    <p class="text-2xl font-bold text-purple-600">$125.50</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg font-semibold mb-2">Tasks Completed</h3>
+                    <p class="text-2xl font-bold text-blue-600">42</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-lg font-semibold mb-2">Upcoming Tasks</h3>
+                    <p class="text-2xl font-bold text-green-600">5</p>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+                <h3 class="text-xl font-semibold mb-4">Quick Actions</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <button onclick="window.location.href='groceries.html'" class="flex items-center justify-center p-4 bg-purple-100 text-purple-600 rounded-lg hover:bg-purple-200 transition">
+                        <i data-feather="shopping-cart" class="mr-2"></i> Groceries
+                    </button>
+                    <button onclick="window.location.href='rides.html'" class="flex items-center justify-center p-4 bg-blue-100 text-blue-600 rounded-lg hover:bg-blue-200 transition">
+                        <i data-feather="truck" class="mr-2"></i> Book Ride
+                    </button>
+                    <button onclick="window.location.href='reminders.html'" class="flex items-center justify-center p-4 bg-green-100 text-green-600 rounded-lg hover:bg-green-200 transition">
+                        <i data-feather="clock" class="mr-2"></i> Set Reminder
+                    </button>
+                    <button class="flex items-center justify-center p-4 bg-yellow-100 text-yellow-600 rounded-lg hover:bg-yellow-200 transition">
+                        <i data-feather="settings" class="mr-2"></i> Settings
+                    </button>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-semibold mb-4">Recent Activity</h3>
+                <div class="space-y-4">
+                    <div class="flex items-start border-b pb-4">
+                        <div class="bg-purple-100 p-2 rounded-full mr-4">
+                            <i data-feather="shopping-bag" class="text-purple-600"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">Grocery order placed</p>
+                            <p class="text-sm text-gray-500">15 minutes ago</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start border-b pb-4">
+                        <div class="bg-blue-100 p-2 rounded-full mr-4">
+                            <i data-feather="truck" class="text-blue-600"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">PickMe ride scheduled</p>
+                            <p class="text-sm text-gray-500">2 hours ago</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-green-100 p-2 rounded-full mr-4">
+                            <i data-feather="bell" class="text-green-600"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">Reminder set for laundry</p>
+                            <p class="text-sm text-gray-500">Yesterday</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>
+
