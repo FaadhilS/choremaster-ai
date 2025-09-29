@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reminders | ChoreMaster AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        body { font-family: 'Poppins', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #6e8efb, #a777e3); }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50">
+    <!-- Header (same as dashboard) -->
+    <header class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i data-feather="home" class="w-8 h-8"></i>
+                    <h1 class="text-2xl font-bold">ChoreMaster AI</h1>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="index.html" class="hover:text-gray-200 transition">Dashboard</a>
+                    <a href="groceries.html" class="hover:text-gray-200 transition">Groceries</a>
+                    <a href="rides.html" class="hover:text-gray-200 transition">Rides</a>
+                    <a href="reminders.html" class="hover:text-gray-200 transition">Reminders</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8">Reminders</h2>
+        
+        <!-- Add Reminder -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-6 max-w-2xl">
+            <h3 class="text-xl font-semibold mb-4">Set New Reminder</h3>
+            <form class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Reminder Title</label>
+                    <input type="text" placeholder="e.g., Take medicine" 
+                           class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-purple-500">
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Date</label>
+                        <input type="date" 
+                               class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-purple-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Time</label>
+                        <input type="time" 
+                               class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-purple-500">
+                    </div>
+                </div>
+                
+                <button type="submit" class="w-full px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+                    <i data-feather="bell" class="inline mr-2"></i>
+                    Set Reminder
+                </button>
+            </form>
+        </div>
+
+        <!-- Active Reminders -->
+        <div class="bg-white rounded-lg shadow-md p-6 max-w-2xl">
+            <h3 class="text-xl font-semibold mb-4">Active Reminders</h3>
+            <div class="space-y-3">
+                <div class="flex justify-between items-center p-3 bg-gray-50 rounded">
+                    <div>
+                        <p class="font-medium">Doctor's Appointment</p>
+                        <p class="text-sm text-gray-500">Tomorrow at 10:00 AM</p>
+                    </div>
+                    <button class="text-red-500 hover:text-red-700">
+                        <i data-feather="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>feather.replace();</script>
+</body>
+</html>
