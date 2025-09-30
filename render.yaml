@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: choremaster-api
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn app:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: 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
+        sync: false
