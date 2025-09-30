@@ -1,5 +1,5 @@
 // API configuration
-const API_BASE_URL = 'https://choremaster-ai.onrender.com';
+const API_BASE_URL = 'https://choremaster-ai.onrender.com/api';
 
 // Helper function for API calls
 async function apiCall(endpoint, method = 'GET', data = null) {
