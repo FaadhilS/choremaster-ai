@@ -69,6 +69,92 @@
         </button>
     </main>
 
-    <script>feather.replace();</script>
+   <script src="js/api.js"></script>
+<script>
+    let groceryItems = [];
+    
+    // Load groceries when page loads
+    document.addEventListener('DOMContentLoaded', async () => {
+        await loadGroceryList();
+    });
+    
+    async function loadGroceryList() {
+        try {
+            groceryItems = await loadGroceries();
+            displayGroceries();
+        } catch (error) {
+            console.error('Failed to load groceries:', error);
+        }
+    }
+    
+    function displayGroceries() {
+        const container = document.querySelector('.space-y-2');
+        container.innerHTML = groceryItems.map(item => `
+            <div class="flex justify-between items-center p-2 hover:bg-gray-50">
+                <span>${item.name} - ${item.quantity}</span>
+                <button onclick="removeItem('${item.id}')" class="text-red-500 hover:text-red-700">
+                    <i data-feather="trash-2" class="w-4 h-4"></i>
+                </button>
+            </div>
+        `).join('');
+        feather.replace();
+    }
+    
+    // Add new item
+    document.querySelector('button[class*="bg-purple-600"]').addEventListener('click', async () => {
+        const input = document.querySelector('input[type="text"]');
+        const itemName = input.value.trim();
+        
+        if (itemName) {
+            try {
+                await addGroceryItem(itemName);
+                input.value = '';
+                await loadGroceryList();
+            } catch (error) {
+                alert('Failed to add item');
+            }
+        }
+    });
+    
+    // Remove item
+    async function removeItem(itemId) {
+        try {
+            await deleteGroceryItem(itemId);
+            await loadGroceryList();
+        } catch (error) {
+            alert('Failed to remove item');
+        }
+    }
+    
+    // Get AI suggestions
+    async function getSuggestions() {
+        try {
+            const result = await getGrocerySuggestions();
+            if (result.suggestions && result.suggestions.length > 0) {
+                const addSuggestions = confirm(`AI suggests adding:\n${result.suggestions.join('\n')}\n\nAdd these items?`);
+                if (addSuggestions) {
+                    for (const item of result.suggestions) {
+                        await addGroceryItem(item);
+                    }
+                    await loadGroceryList();
+                }
+            }
+        } catch (error) {
+            alert('Failed to get suggestions');
+        }
+    }
+    
+    // Add suggestions button
+    const placeOrderBtn = document.querySelector('button[class*="bg-green-600"]');
+    placeOrderBtn.insertAdjacentHTML('beforebegin', `
+        <button onclick="getSuggestions()" class="mr-4 px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+            <i data-feather="cpu" class="inline mr-2"></i>
+            Get AI Suggestions
+        </button>
+    `);
+    
+    feather.replace();
+</script>
 </body>
+
 </html>
