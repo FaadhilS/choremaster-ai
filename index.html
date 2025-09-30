@@ -270,6 +270,49 @@
         </div>
     </main>
 </body>
+    <script src="js/api.js"></script>
+<script>
+    // Load dashboard stats when page loads
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            const stats = await getDashboardStats();
+            
+            // Update the stats on the page
+            document.querySelector('.text-purple-600').textContent = `$${stats.monthly_savings}`;
+            document.querySelector('.text-blue-600').textContent = stats.tasks_completed;
+            document.querySelector('.text-green-600').textContent = stats.upcoming_tasks;
+            
+            // Update recent activity
+            const activityContainer = document.querySelector('.space-y-4');
+            activityContainer.innerHTML = stats.recent_activity.map(activity => `
+                <div class="flex items-start border-b pb-4">
+                    <div class="bg-${getColorForType(activity.type)}-100 p-2 rounded-full mr-4">
+                        <i data-feather="${getIconForType(activity.type)}" class="text-${getColorForType(activity.type)}-600"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium">${activity.description}</p>
+                        <p class="text-sm text-gray-500">${activity.time}</p>
+                    </div>
+                </div>
+            `).join('');
+            
+            feather.replace();
+        } catch (error) {
+            console.error('Failed to load dashboard stats:', error);
+        }
+    });
+    
+    function getColorForType(type) {
+        const colors = { grocery: 'purple', ride: 'blue', reminder: 'green' };
+        return colors[type] || 'gray';
+    }
+    
+    function getIconForType(type) {
+        const icons = { grocery: 'shopping-bag', ride: 'truck', reminder: 'bell' };
+        return icons[type] || 'activity';
+    }
+</script>
 </html>
+
 
 
